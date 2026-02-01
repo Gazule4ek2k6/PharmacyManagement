@@ -108,7 +108,7 @@
         <ComboBox x:Name="SuppliersList"
                   DisplayMemberPath="SupplierName"
                   SelectedValuePath="SupplierId"
-                  SelectedValue="{Binding Supplier}"
+                  SelectedValue="{Binding SupplierId}"
                   Height="36" 
                   Padding="12,8" 
                   FontSize="14"
