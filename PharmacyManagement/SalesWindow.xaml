@@ -1,0 +1,92 @@
+﻿<Window x:Class="PharmacyManagement.SalesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PharmacyManagement"
+        mc:Ignorable="d"
+        Title="История продаж" Height="662" Width="860"
+        Background="#F0F4FF">
+
+    <StackPanel Margin="30">
+        <TextBlock Text="История продаж" 
+                   FontSize="28" 
+                   FontWeight="SemiBold" 
+                   Foreground="#2C3E87"
+                   Margin="0,0,0,28"
+                   HorizontalAlignment="Left"/>
+
+        <ScrollViewer Height="420" 
+                      Padding="5,0"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Background="Transparent">
+            <ItemsControl x:Name="SalesList" Width="800">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" 
+                                    Margin="0,0,0,18"
+                                    Background="White"
+                                    MouseDown="StackPanel_MouseDown">
+
+                            <StackPanel Width="520">
+                                <TextBlock Text="{Binding SaleDateTime, StringFormat=Дата: {0:dd.MM.yyyy HH:mm}}" 
+                                           FontSize="16" 
+                                           FontWeight="SemiBold"
+                                           Foreground="#1E293B"
+                                           Margin="0,0,0,10"/>
+
+                                <TextBlock Text="{Binding Customer.FullName, StringFormat=Клиент: {0}}" 
+                                           FontSize="14"
+                                           Foreground="#4A5568"
+                                           Margin="0,0,0,8"/>
+
+                                <TextBlock Text="{Binding Medicine.MedicineName, StringFormat=Товар: {0}}" 
+                                           FontSize="15"
+                                           FontWeight="Medium"
+                                           Foreground="#2C3E87"
+                                           Margin="0,0,0,8"/>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                    <TextBlock Text="{Binding Quantity, StringFormat=Количество: {0} шт.}" 
+                                               FontSize="14"
+                                               Foreground="#4A5568"
+                                               Margin="0,0,20,0"/>
+                                    <TextBlock Text="{Binding Amount, StringFormat=Сумма: {0} ₽}" 
+                                               FontSize="15"
+                                               FontWeight="SemiBold"
+                                               Foreground="#0F766E"/>
+                                </StackPanel>
+
+                                <Border Height="1" 
+                                        Background="#E2E8F0" 
+                                        Margin="0,12,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel Margin="0,24,0,0" 
+                    HorizontalAlignment="Center">
+            <Button x:Name="NoManager" 
+                    Content="Добавить продажу" 
+                    Width="240" 
+                    Height="50"
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Background="#4F46E5"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Click="Add_Click">
+                <Button.Effect>
+                    <DropShadowEffect Color="#4F46E5" 
+                                      BlurRadius="14" 
+                                      ShadowDepth="0" 
+                                      Opacity="0.3"/>
+                </Button.Effect>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Window>
